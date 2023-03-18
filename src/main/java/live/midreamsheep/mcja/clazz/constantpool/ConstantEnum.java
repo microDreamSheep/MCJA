@@ -26,4 +26,13 @@ public enum ConstantEnum {
         return tag;
     }
 
+    public ConstantEnum getConstantEnum(int tag){
+        for (ConstantEnum constantEnum : ConstantEnum.values()) {
+            if (constantEnum.getTag()==tag){
+                return constantEnum;
+            }
+        }
+        return null;
+    }
+
 }

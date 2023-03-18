@@ -14,6 +14,5 @@ public class ConstantPoolTest {
         pool.addConstantUTF8("hello world2");
         pool.addConstantClass("live.midreamsheep.sheep");
         pool.addConstantMethodRef("live.midreamsheep.sheep","main","([Ljava/lang/String;)V");
-
     }
 }
