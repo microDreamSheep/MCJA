@@ -1,8 +1,10 @@
 package live.midreamsheep.mcja.clazz.constantpool;
 
+import live.midreamsheep.mcja.clazz.attribute.AttributeEnum;
 import live.midreamsheep.mcja.clazz.constantpool.constant.MCJAConstant;
 import live.midreamsheep.mcja.error.IllDataTypeException;
 
+@SuppressWarnings({"all"})
 public interface ConstantPoolInter {
     int getConstantCount();
     MCJAConstant getConstant(int index);
@@ -22,5 +24,5 @@ public interface ConstantPoolInter {
     ConstantPoolInter addConstantMethodType(String type);
     ConstantPoolInter addConstantMethodHandle(int referenceKind,String reference) throws IllDataTypeException;
     ConstantPoolInter addConstantInvokeDynamic(int bootstrapMethodAttrIndex,String nameAndType);
-
+    short getUtf8Index(AttributeEnum type);
 }

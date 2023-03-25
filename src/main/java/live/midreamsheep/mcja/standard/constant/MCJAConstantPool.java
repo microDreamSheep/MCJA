@@ -1,5 +1,6 @@
 package live.midreamsheep.mcja.standard.constant;
 
+import live.midreamsheep.mcja.clazz.attribute.AttributeEnum;
 import live.midreamsheep.mcja.clazz.constantpool.ConstantPoolInter;
 import live.midreamsheep.mcja.clazz.constantpool.constant.MCJAConstant;
 import live.midreamsheep.mcja.clazz.constantpool.constant.constants.*;
@@ -214,6 +215,14 @@ public class MCJAConstantPool implements ConstantPoolInter {
         constants.add(constantInvokeDynamicInfo);
         existMap.put("ConstantInvokeDynamic:"+bootstrapMethodAttrIndex+";"+nameAndType,constantInvokeDynamicInfo);
         return this;
+    }
+
+    @Override
+    public short getUtf8Index(AttributeEnum type) {
+        if(!utf8Map.containsKey(type.getName())){
+            addConstantUTF8(type.getName());
+        }
+        return utf8Map.get(type.getName());
     }
 
 

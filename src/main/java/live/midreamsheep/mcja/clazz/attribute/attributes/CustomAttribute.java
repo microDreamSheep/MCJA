@@ -1,21 +1,17 @@
 package live.midreamsheep.mcja.clazz.attribute.attributes;
 
 import live.midreamsheep.mcja.clazz.attribute.AttributeEnum;
-import live.midreamsheep.mcja.clazz.attribute.MCJAAttributeInterface;
+import live.midreamsheep.mcja.clazz.attribute.MCJAAttributeAbstract;
+import live.midreamsheep.mcja.error.IllDataTypeException;
 
-public class CustomAttribute implements MCJAAttributeInterface {
+public class CustomAttribute extends MCJAAttributeAbstract {
 
     private static final AttributeEnum type = AttributeEnum.CUSTOM;
 
-    private byte[] data;
-    @Override
-    public void setData(byte[] data) {
-        this.data = data;
-    }
 
     @Override
-    public int getAttributeLength() {
-        return data.length;
+    public void loadData() throws IllDataTypeException {
+        throw new IllDataTypeException("CustomAttribute can't load data");
     }
 
     @Override
@@ -23,8 +19,4 @@ public class CustomAttribute implements MCJAAttributeInterface {
         return type;
     }
 
-    @Override
-    public byte[] getData() {
-        return data;
-    }
 }
