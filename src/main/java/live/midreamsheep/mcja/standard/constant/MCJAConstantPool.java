@@ -57,14 +57,14 @@ public class MCJAConstantPool implements ConstantPoolInter {
 
     @Override
     public ConstantPoolInter addConstantClass(String classname) throws IllDataTypeException {
-        if(constantCheck(classname)){
+        if(constantCheck("ClassInfo:"+classname)){
             return this;
         }
         utf8Check(classname);
         ConstantClassInfo constantClassInfo = new ConstantClassInfo();
         constantClassInfo.setData(FormatConversion.asByteArray(new short[]{utf8Map.get(classname)}));
         constants.add(constantClassInfo);
-        existMap.put(classname,constantClassInfo);
+        existMap.put("ClassInfo:"+classname,constantClassInfo);
         return this;
     }
 
@@ -228,6 +228,14 @@ public class MCJAConstantPool implements ConstantPoolInter {
             addConstantUTF8(str);
         }
         return utf8Map.get(str);
+    }
+
+    @Override
+    public short getClassIndex(String classname) throws IllDataTypeException {
+        if(!existMap.containsKey("ClassInfo:"+classname)){
+            addConstantClass(classname);
+        }
+        return (short) constants.indexOf(existMap.get("ClassInfo:"+classname));
     }
 
     private void utf8Check(String... strings){

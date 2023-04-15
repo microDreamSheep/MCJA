@@ -26,4 +26,5 @@ public interface ConstantPoolInter {
     ConstantPoolInter addConstantInvokeDynamic(int bootstrapMethodAttrIndex,String nameAndType);
     short getUtf8Index(AttributeEnum type);
     short getUtf8Index(String str);
+    short getClassIndex(String classname) throws IllDataTypeException;
 }
