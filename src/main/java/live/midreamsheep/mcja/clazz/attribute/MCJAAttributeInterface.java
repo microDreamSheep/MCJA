@@ -7,7 +7,7 @@ public interface MCJAAttributeInterface {
 
     void setData(byte[] data) throws IllDataTypeException;
 
-    void loadData() throws IllDataTypeException;
+    MCJAAttributeInterface loadData() throws IllDataTypeException;
 
     int getAttributeLength();
 

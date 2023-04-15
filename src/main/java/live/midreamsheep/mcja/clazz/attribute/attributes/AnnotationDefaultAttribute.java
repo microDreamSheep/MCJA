@@ -2,6 +2,7 @@ package live.midreamsheep.mcja.clazz.attribute.attributes;
 
 import live.midreamsheep.mcja.clazz.attribute.AttributeEnum;
 import live.midreamsheep.mcja.clazz.attribute.MCJAAttributeAbstract;
+import live.midreamsheep.mcja.clazz.attribute.MCJAAttributeInterface;
 import live.midreamsheep.mcja.error.IllDataTypeException;
 
 public class AnnotationDefaultAttribute extends MCJAAttributeAbstract{
@@ -12,8 +13,8 @@ public class AnnotationDefaultAttribute extends MCJAAttributeAbstract{
 
 
     @Override
-    public void loadData() throws IllDataTypeException {
-
+    public MCJAAttributeInterface loadData() throws IllDataTypeException {
+        return this;
     }
 
     @Override

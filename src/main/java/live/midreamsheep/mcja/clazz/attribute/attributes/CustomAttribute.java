@@ -2,6 +2,7 @@ package live.midreamsheep.mcja.clazz.attribute.attributes;
 
 import live.midreamsheep.mcja.clazz.attribute.AttributeEnum;
 import live.midreamsheep.mcja.clazz.attribute.MCJAAttributeAbstract;
+import live.midreamsheep.mcja.clazz.attribute.MCJAAttributeInterface;
 import live.midreamsheep.mcja.error.IllDataTypeException;
 
 public class CustomAttribute extends MCJAAttributeAbstract {
@@ -10,7 +11,7 @@ public class CustomAttribute extends MCJAAttributeAbstract {
 
 
     @Override
-    public void loadData() throws IllDataTypeException {
+    public MCJAAttributeInterface loadData() throws IllDataTypeException {
         throw new IllDataTypeException("CustomAttribute can't load data");
     }
 

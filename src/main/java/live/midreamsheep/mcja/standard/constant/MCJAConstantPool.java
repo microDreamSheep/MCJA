@@ -70,49 +70,49 @@ public class MCJAConstantPool implements ConstantPoolInter {
 
     @Override
     public ConstantPoolInter addConstantInteger(int data) throws IllDataTypeException {
-        if(constantCheck(data+"")){
+        if(constantCheck(String.valueOf(data))){
             return this;
         }
         ConstantIntegerInfo constantIntegerInfo = new ConstantIntegerInfo();
         constantIntegerInfo.setData(FormatConversion.asByteArray(new int[]{data}));
         constants.add(constantIntegerInfo);
-        existMap.put(data+"",constantIntegerInfo);
+        existMap.put(String.valueOf(data),constantIntegerInfo);
         return this;
     }
 
     @Override
     public ConstantPoolInter addConstantFloat(float data) throws IllDataTypeException {
-        if(constantCheck(data+"")){
+        if(constantCheck(String.valueOf(data))){
             return this;
         }
         ConstantFloatInfo constantFloatInfo = new ConstantFloatInfo();
         constantFloatInfo.setData(FormatConversion.asByteArray(new float[]{data}));
         constants.add(constantFloatInfo);
-        existMap.put(data+"",constantFloatInfo);
+        existMap.put(String.valueOf(data),constantFloatInfo);
         return this;
     }
 
     @Override
     public ConstantPoolInter addConstantDouble(double data) throws IllDataTypeException {
-        if (constantCheck(data+"")){
+        if (constantCheck(String.valueOf(data))){
             return this;
         }
         ConstantDoubleInfo constantDoubleInfo = new ConstantDoubleInfo();
         constantDoubleInfo.setData(FormatConversion.asByteArray(new double[]{data}));
         constants.add(constantDoubleInfo);
-        existMap.put(data+"",constantDoubleInfo);
+        existMap.put(String.valueOf(data),constantDoubleInfo);
         return this;
     }
 
     @Override
     public ConstantPoolInter addConstantLong(long data) throws IllDataTypeException {
-        if (constantCheck(data+"")){
+        if (constantCheck(String.valueOf(data))){
             return this;
         }
         ConstantLongInfo constantLongInfo = new ConstantLongInfo();
         constantLongInfo.setData(FormatConversion.asByteArray(new long[]{data}));
         constants.add(constantLongInfo);
-        existMap.put(data+"",constantLongInfo);
+        existMap.put(String.valueOf(data),constantLongInfo);
         return this;
     }
 
@@ -219,12 +219,16 @@ public class MCJAConstantPool implements ConstantPoolInter {
 
     @Override
     public short getUtf8Index(AttributeEnum type) {
-        if(!utf8Map.containsKey(type.getName())){
-            addConstantUTF8(type.getName());
-        }
-        return utf8Map.get(type.getName());
+        return getUtf8Index(type.getName());
     }
 
+    @Override
+    public short getUtf8Index(String str) {
+        if(!utf8Map.containsKey(str)){
+            addConstantUTF8(str);
+        }
+        return utf8Map.get(str);
+    }
 
     private void utf8Check(String... strings){
         for (String str : strings) {

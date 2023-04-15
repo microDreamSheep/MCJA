@@ -25,4 +25,5 @@ public interface ConstantPoolInter {
     ConstantPoolInter addConstantMethodHandle(int referenceKind,String reference) throws IllDataTypeException;
     ConstantPoolInter addConstantInvokeDynamic(int bootstrapMethodAttrIndex,String nameAndType);
     short getUtf8Index(AttributeEnum type);
+    short getUtf8Index(String str);
 }
