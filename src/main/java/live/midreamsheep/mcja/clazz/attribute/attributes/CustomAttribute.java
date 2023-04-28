@@ -20,4 +20,7 @@ public class CustomAttribute extends MCJAAttributeAbstract {
         return type;
     }
 
+    public CustomAttribute(String type) {
+        this.index =  context.getConstant().getUtf8Index(type);
+    }
 }
